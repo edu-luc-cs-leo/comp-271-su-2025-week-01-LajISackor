@@ -6,7 +6,8 @@ import java.util.Arrays; // for printing array
  * array to add a new value, the new element should be placed at index arr.length,
  * which is one position past the last original element — i.e., the new last index
  * of the enlarged array. This works because the temporary array is already
- * declared as one element larger than the original array.
+ * declared as one element larger than the original array
+ *
  */
 
 /**

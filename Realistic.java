@@ -67,66 +67,6 @@ public class Realistic {
         return result;
     }
 
-
-
-    /**
-     * Scan the entire array to find and remove its smallest value.
-     * The method uses array arr[] created above.
-     * 
-     * @return int with the smallest value in array arr
-     */
-    public static int getSmallest() {
-        // Assume smallest is first element
-        int smallest_index = 0;
-        // Scan the remaining elements, replacing the position of the smallest element
-        // with the position of any element found to be smaller.
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] < arr[smallest_index]) {
-                // found new smallest, update index
-                smallest_index = i;
-            }
-        }
-        // When loop is done, smallest_index points to smallest element. Save it in a
-        // variable so that we can return its value when we are done.
-        int result = arr[smallest_index];
-        // Prepare to shrink the processed array by one element, effectively removing
-        // its smallest element. A temporary array will hold the remaining elements.
-        int[] temporary = new int[arr.length - 1];
-
-        /*
-         * Use two loops to copy the elements of arr[] to temporary[], except for the
-         * smallest element. The first loop copies all the elements before the smallest
-         * element and the second loop the elements after it.
-         * 
-         * EXPLANATION OF THE LOOPS (per last week's assignment): the first loop copies
-         * all the elements before the smallest element to the temporary array. To
-         * insure it does not "touch" the smallest element, the index of the loop in in
-         * the range
-         * 0 ≤ i < smallest_index.
-         * 
-         * The second loop copies all the elements after the smallest element to the
-         * temporary array. To ensure this loop doesn't touch the smallest element
-         * either, its range is
-         * smallest_index < i < arr.length
-         * 
-         * In the first loop temporary and principal array (arr) indices are
-         * synchronized. In the second array, the temporary array index becomes i-1
-         * while the principal array index remains i. The shift from temporary[i] in the
-         * first loop to temporary[i-1] in the second loop is to avoid a gap due to
-         * skipping the smallest element. Also the i-1 index in the second loop ensures
-         * that the temporary array index will not get out of bounds.
-         */
-        for (int i = 0; i < smallest_index; i++) {
-            temporary[i] = arr[i];
-        }
-        for (int i = smallest_index + 1; i < arr.length; i++) {
-            temporary[i - 1] = arr[i];
-        }
-        // replace principal array with temporary array.
-        arr = temporary;
-        return result; // smallest element
-    } // method getSmallest
-
     /**
      * Adds a new element to the end of the principal array arr after it resizes up
      * to accomodate the new element.
